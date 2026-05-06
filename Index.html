@@ -46,27 +46,27 @@ const app = Vue.createApp({
             jokes: [
 
                 {
-                    icon_url: "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+                    icon_url: "img/furby.jpg",
                     value: "Chuck Norris counted to infinity twice."
                 },
 
                 {
-                    icon_url: "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+            icon_url: "img/furby.jpg",
                     value: "Chuck Norris can divide by zero."
                 },
 
                 {
-                    icon_url: "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+                    icon_url: "img/furby.jpg",
                     value: "When Chuck Norris does push-ups, he pushes Earth down."
                 },
 
                 {
-                    icon_url: "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+                    icon_url: "img/furby.jpg",
                     value: "Chuck Norris can hear sign language."
                 },
 
                 {
-                    icon_url: "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+                    icon_url: "img/furby.jpg",
                     value: "Death once had a near-Chuck Norris experience."
                 }
 
@@ -91,9 +91,10 @@ app.component('joke-card', {
         <div class="card h-100 shadow">
 
             <img
-                :src="icon_url"
-                class="card-img-top"
-                alt="Chuck Norris">
+    :src="icon_url"
+    class="card-img-top"
+    style="height:250px; object-fit:cover;"
+    alt="Imagen">
 
             <div class="card-body">
 
