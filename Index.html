@@ -2,60 +2,42 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Chuck Jokes Vue</title>
+    <title>ChuckJokesVue</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Vue -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-    <style>
-        body {
-            font-family: Arial;
-            background: #f4f4f4;
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        .card {
-            background: white;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        .category {
-            background: #42b883;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
-    </style>
 </head>
-<body>
+<body class="bg-light">
 
-    <div id="app">
+    <div id="app" class="container py-5">
 
-        <h1>Chuck Norris Jokes</h1>
+        <h1 class="text-center mb-5">
+            Chuck Norris Cards
+        </h1>
 
-        <!-- Lista con v-for -->
-        <div class="card" v-for="joke in jokes">
+        <div class="row g-4">
 
-            <div class="category">
-                {{ joke.category }}
+            <!-- CARD -->
+            <div class="col-12 col-md-4"
+                 v-for="item in jokes">
+
+                <joke-card :icon_url="item.icon_url"
+                           :value="item.value">
+                </joke-card>
+
             </div>
-
-            <p>{{ joke.text }}</p>
 
         </div>
 
     </div>
 
-    <script>Vue.createApp({
+    <script>
+
+const app = Vue.createApp({
 
     data() {
 
@@ -64,18 +46,28 @@
             jokes: [
 
                 {
-                    category: "Funny",
-                    text: "Chuck Norris counted to infinity twice."
+                    icon_url: "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+                    value: "Chuck Norris counted to infinity twice."
                 },
 
                 {
-                    category: "Action",
-                    text: "Chuck Norris can divide by zero."
+                    icon_url: "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+                    value: "Chuck Norris can divide by zero."
                 },
 
                 {
-                    category: "Legend",
-                    text: "When Chuck Norris does push-ups, he pushes Earth down."
+                    icon_url: "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+                    value: "When Chuck Norris does push-ups, he pushes Earth down."
+                },
+
+                {
+                    icon_url: "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+                    value: "Chuck Norris can hear sign language."
+                },
+
+                {
+                    icon_url: "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+                    value: "Death once had a near-Chuck Norris experience."
                 }
 
             ]
@@ -84,7 +76,42 @@
 
     }
 
-}).mount('#app')</script>
+})
+
+/* COMPONENTE */
+app.component('joke-card', {
+
+    props: [
+        'icon_url',
+        'value'
+    ],
+
+    template: `
+
+        <div class="card h-100 shadow">
+
+            <img
+                :src="icon_url"
+                class="card-img-top"
+                alt="Chuck Norris">
+
+            <div class="card-body">
+
+                <p class="card-text">
+                    {{ value }}
+                </p>
+
+            </div>
+
+        </div>
+
+    `
+
+})
+
+app.mount('#app')
+
+    </script>
 
 </body>
 </html>
